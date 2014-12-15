@@ -51,7 +51,6 @@ gulp.task('build', function() {
       lowerName = name.toLocaleLowerCase();
 
   return gulp.src('./index.js')
-    .pipe(plumber())
     .pipe(bufferedBrowserify(name))
     .pipe(header(banner, {name: name, version: package.version}))
     .pipe(rename(lowerName + '.js'))
@@ -66,13 +65,14 @@ gulp.task('build', function() {
 
 gulp.task('build-test', function() {
   var espower = require('gulp-espower');
-  var to5     = require('gulp-6to5');
 
-  return gulp.src(['./test/**/*.js'])
-    .pipe(plumber())
-    .pipe(to5())
-    .pipe(espower())
+  gulp.src('./test/runner.js')
     .pipe(bufferedBrowserify(null))
+    .pipe(gulp.dest('./temp'));
+
+  return gulp.src(['./test/**/*.js', '!./test/runner.js'])
+    .pipe(bufferedBrowserify(null))
+    .pipe(espower())
     .pipe(gulp.dest('./temp'));
 });
 
@@ -83,7 +83,6 @@ gulp.task('build-test', function() {
 //  var to5     = require('gulp-6to5');
 //
 //  return gulp.src('./src/**/*.js')
-//    .pipe(plumber())
 //    .pipe(to5())
 //    .pipe(gulp.dest('./temp/src'));
 //});
@@ -93,7 +92,6 @@ gulp.task('build-test', function() {
 //  var to5     = require('gulp-6to5');
 //
 //  return gulp.src(['./test/**/*.js', '!./test/setup.js'])
-//    .pipe(plumber())
 //    .pipe(to5())
 //    .pipe(espower())
 //    .pipe(gulp.dest('./temp/test'));
