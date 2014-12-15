@@ -11,12 +11,16 @@ cd ./your-project
 npm install
 ```
 
-If you have not yet installed a `gulp` globally, please run `npm install -g gulp`.
-
 ### Convert the es6 files into es5 compat files, and browserifying
 
 ```
 npm run build
+```
+
+### Build & bump version in package.json
+
+```
+npm run release
 ```
 
 ### Run tests for development (auto re-run when file changed)
@@ -36,9 +40,9 @@ npm test
 
 Initial setting is for browser, please following steps if you want to use in the Node module.
 
-1. Remove the comment escape in Gulpfile.js, to set for node setting. 
+1. Remove the comment in Gulpfile.js, to set for node setting.
 2. `testem.node.json` rename to `testem.json`
-3. import your files from `../dist/cmj/*.js` in the test code.
+3. Add `import  * as assert from 'power-assert';` into test code.
 
 ## Using libraries
 

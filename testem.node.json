@@ -5,13 +5,12 @@
   "before_tests": "gulp pretest",
   "on_exit": "rm -rf ./temp",
   "src_files": [
+    "src/**/*.js",
     "test/**/*.js"
   ],
   "serve_files": [
-    "temp/**/*.js"
-  ],
-  "serve_files_ignore": [
-    "dist/*.min.js"
+    "temp/src/**/*.js",
+    "temp/test/**/*.js"
   ],
   "launchers": {
     "Mocha": {

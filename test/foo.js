@@ -1,9 +1,8 @@
 /* global YourApp */
 'use strict';
 
-// for node CommonJS
-// import foo from '../dist/cmj/foo';
-// import  * as assert from 'power-assert';
+// for nodeJS
+//import  * as assert from 'power-assert';
 
 import foo from '../src/foo';
 
