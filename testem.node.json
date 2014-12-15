@@ -1,0 +1,24 @@
+{
+  "framework": [
+    "/node_modules/mocha/mocha.js"
+  ],
+  "before_tests": "gulp pretest",
+  "on_exit": "rm -rf ./temp",
+  "src_files": [
+    "test/**/*.js"
+  ],
+  "serve_files": [
+    "temp/**/*.js"
+  ],
+  "serve_files_ignore": [
+    "dist/*.min.js"
+  ],
+  "launchers": {
+    "Mocha": {
+      "command": "node_modules/.bin/mocha temp/**/*.js -R tap",
+      "protocol": "tap"
+    }
+  },
+  "launch_in_dev": ["Mocha"],
+  "launch_in_ci": ["Mocha"]
+}
