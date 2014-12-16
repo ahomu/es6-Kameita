@@ -8,13 +8,16 @@ var package  = require('./package.json');
 var banner   = '/*! <%= name %> - v<%= version %> */'
 
 function bufferedBrowserify(standaloneName) {
-  var transform     = require('vinyl-transform');
-  var browserify    = require('browserify');
-  var to5browserify = require('6to5-browserify');
+  var transform  = require('vinyl-transform');
+  var browserify = require('browserify');
+  var to5ify     = require('6to5ify');
 
   return transform(function(filename) {
     return browserify(filename, {standalone: standaloneName, debug: true})
-      .transform(to5browserify)
+      .transform(to5ify.configure({
+        experimental : false,
+        runtime      : true
+      }))
       .bundle()
       .on('error', function(err){
         console.error(err.message);
