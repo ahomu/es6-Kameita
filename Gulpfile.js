@@ -53,6 +53,12 @@ gulp.task('release', function() {
   sequence('jshint', 'bump', 'build', 'build-test');
 });
 
+gulp.task('watch', function() {
+  gulp.watch(['./index.js', './src/**/*.js'], function() {
+    gulp.start('jshint', 'build');
+  });
+});
+
 gulp.task('build', function() {
   var exportName = package.name.replace('-', '');
   var fileName = package.name.toLocaleLowerCase();
