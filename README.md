@@ -1,15 +1,25 @@
-ES6 project skeleton
+ES6 project skeleton for Browser and Node
 ====================
 
-亀板 ( _Kameita_ ) は陶芸の道具です。粘土をのせたり回ったりします。
+[![Licence](http://img.shields.io/badge/license-MIT-000000.svg?style=flat-square)](https://npmjs.org/package/es6-Kameita)
+[![Version](http://img.shields.io/npm/v/es6-Kameita.svg?style=flat-square)](https://npmjs.org/package/es6-Kameita)
+
+亀板 ( _Kameita_ ) は陶芸、ろくろの道具です。粘土をのせたりします。
 
 ## Getting Started
 
 ```
 git clone https://github.com/ahomu/es6-Kameita.git ./your-project
 cd ./your-project
+rm -rf .git
 npm install
 ```
+
+## ES6 Compatibility
+
+This skeleton is dependent on [6to5/6to5](https://github.com/6to5/6to5). Please see [6to5's document site](https://6to5.org/). 
+
+[Optional Runtime](https://6to5.org/optional-runtime.html) and [Polyfill](https://6to5.org/polyfill.html) are already supported.
 
 ### Convert the es6 files into es5 compat files, and browserifying
 
@@ -48,6 +58,7 @@ Initial setting is for browser, please following steps if you want to use in the
 
 - [6to5/6to5](https://github.com/6to5/6to5)
 - [substack/node-browserify](https://github.com/substack/node-browserify)
+- [gulpjs/gulp](https://github.com/gulpjs/gulp/)
 - [airportyh/testem](https://github.com/airportyh/testem)
 - [mochajs/mocha](https://github.com/mochajs/mocha)
 - [twada/power-assert](https://github.com/twada/power-assert)
@@ -55,4 +66,5 @@ Initial setting is for browser, please following steps if you want to use in the
 
 ## ToDo
 
+- register [Gemnasium](https://gemnasium.com/)
 - add CI service configuration (Travis, Circle, etc)
