@@ -13,7 +13,11 @@ function bufferedBrowserify(standaloneName) {
   var to5ify     = require('6to5ify');
 
   return transform(function(filename) {
-    return browserify(filename, {standalone: standaloneName, debug: true})
+    return browserify(filename, {
+        standalone : standaloneName,
+        debug      : true,
+        noParse    : [require.resolve('6to5/browser-polyfill')]
+      })
       .transform(to5ify.configure({
         experimental : false,
         runtime      : true
