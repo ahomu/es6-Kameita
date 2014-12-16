@@ -1,8 +1,8 @@
 ES6 project skeleton for Browser and Node
 ====================
 
-[![Licence](http://img.shields.io/badge/license-MIT-000000.svg?style=flat-square)](https://npmjs.org/package/es6-Kameita)
-[![Version](http://img.shields.io/npm/v/es6-Kameita.svg?style=flat-square)](https://npmjs.org/package/es6-Kameita)
+[![Licence](http://img.shields.io/badge/license-MIT-000000.svg?style=flat-square)](https://npmjs.org/package/es6-kameita)
+[![Version](http://img.shields.io/npm/v/es6-kameita.svg?style=flat-square)](https://npmjs.org/package/es6-kameita)
 
 亀板 ( _Kameita_ ) は陶芸、ろくろの道具です。粘土をのせたりします。
 
@@ -68,3 +68,5 @@ Initial setting is for browser, please following steps if you want to use in the
 
 - register [Gemnasium](https://gemnasium.com/)
 - add CI service configuration (Travis, Circle, etc)
+- add coverage reporter
+- add code quality reporter
