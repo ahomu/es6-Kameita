@@ -7,15 +7,10 @@
 import runtime from '6to5/runtime'
 
 /**
- * if using a feature that requires a Polyfill
+ * if using a feature that requires a browser-polyfill
  * @see https://6to5.org/polyfill.html
  */
-
-// import polyfill from '6to5/browser-polyfill'
-// => browser
-
-// import polyfill from '6to5/polyfill'
-// => node
+import polyfill from '6to5/browser-polyfill'
 
 // your project module...
 import foo from './src/foo';

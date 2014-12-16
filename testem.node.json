@@ -8,10 +8,6 @@
     "src/**/*.js",
     "test/**/*.js"
   ],
-  "serve_files": [
-    "temp/src/**/*.js",
-    "temp/test/**/*.js"
-  ],
   "launchers": {
     "Mocha": {
       "command": "node_modules/.bin/mocha temp/**/*.js -R tap",

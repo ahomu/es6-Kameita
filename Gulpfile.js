@@ -90,7 +90,10 @@ gulp.task('build-test', function() {
 //  var to5     = require('gulp-6to5');
 //
 //  return gulp.src('./src/**/*.js')
-//    .pipe(to5())
+//    .pipe(to5({
+//      experimental : false,
+//      runtime      : true
+//    }))
 //    .pipe(gulp.dest('./temp/src'));
 //});
 //
@@ -99,7 +102,10 @@ gulp.task('build-test', function() {
 //  var to5     = require('gulp-6to5');
 //
 //  return gulp.src(['./test/**/*.js', '!./test/setup.js'])
-//    .pipe(to5())
+//    .pipe(to5({
+//      experimental : false,
+//      runtime      : true
+//    }))
 //    .pipe(espower())
 //    .pipe(gulp.dest('./temp/test'));
 //});
