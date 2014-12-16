@@ -8,7 +8,7 @@ import foo from '../src/foo';
 
 describe('test', function() {
   it('foo?',function(){
-    assert(YourApp != null);
+    assert(es6kameita != null);
   });
   it('foo!',function(){
     assert(foo() == 'bar!');

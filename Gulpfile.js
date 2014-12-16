@@ -54,19 +54,19 @@ gulp.task('release', function() {
 });
 
 gulp.task('build', function() {
-  var name = package.name,
-      lowerName = name.toLocaleLowerCase();
+  var exportName = package.name.replace('-', '');
+  var fileName = package.name.toLocaleLowerCase();
 
   return gulp.src('./index.js')
-    .pipe(bufferedBrowserify(name))
-    .pipe(header(banner, {name: name, version: package.version}))
-    .pipe(rename(lowerName + '.js'))
+    .pipe(bufferedBrowserify(exportName))
+    .pipe(header(banner, {name: fileName, version: package.version}))
+    .pipe(rename(fileName + '.js'))
     .pipe(gulp.dest('./dist'))
     .pipe(plumber())
     .pipe(uglify({
       preserveComments: 'some'
     }))
-    .pipe(rename(lowerName + '.min.js'))
+    .pipe(rename(fileName + '.min.js'))
     .pipe(gulp.dest('./dist'))
 });
 
