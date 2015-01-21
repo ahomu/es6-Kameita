@@ -21,6 +21,7 @@
   "browser": true,
   "devel": true,
   "esnext": true,
+  "node": true,
 
   "globalstrict": true,
   "eqnull": true,

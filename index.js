@@ -4,7 +4,7 @@
  * if you want to using `to5Runtime`
  * @see https://6to5.org/optional-runtime.html
  */
-import runtime from '6to5/runtime';
+require('6to5/runtime'); // Using the "require" to avoid call "to5Runtime.interopRequire()"
 
 /**
  * if using a feature that requires a browser-polyfill

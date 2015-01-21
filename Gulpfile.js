@@ -1,12 +1,17 @@
 var gulp     = require('gulp');
-var uglify   = require('gulp-uglify');
-var rename   = require('gulp-rename');
-var header   = require('gulp-header');
-var jshint   = require('gulp-jshint');
 var plumber  = require('gulp-plumber');
 var sequence = require('run-sequence').use(gulp);
 var package  = require('./package.json');
 var banner   = '/*! <%= name %> - v<%= version %> */'
+
+var FILE_BROWSERIFY_INDEX = './index.js';
+var FILE_TEST_RUNNER      = './test/runner.js';
+
+var DIR_DIST = './dist';
+var DIR_TEMP = './temp';
+
+var GLOB_TEST_FILES = ['./test/**/*.js', '!./test/runner.js'];
+var GLOB_SRC_FILES  = ['./index.js', './src/**/*.js'];
 
 function bufferedBrowserify(standaloneName) {
   var transform  = require('vinyl-transform');
@@ -17,7 +22,10 @@ function bufferedBrowserify(standaloneName) {
     return browserify(filename, {
         standalone : standaloneName,
         debug      : true,
-        noParse    : [require.resolve('6to5/browser-polyfill')]
+        noParse    : [
+          require.resolve('6to5/runtime'),
+          require.resolve('6to5/browser-polyfill')
+        ]
       })
       .transform(to5ify.configure({
         experimental : false,
@@ -33,7 +41,9 @@ function bufferedBrowserify(standaloneName) {
 }
 
 gulp.task('jshint', function() {
-  return gulp.src(['./index.js', './src/**/*.js'])
+  var jshint   = require('gulp-jshint');
+
+  return gulp.src(GLOB_SRC_FILES)
     .pipe(jshint('./.jshintrc'))
     .pipe(jshint.reporter('jshint-stylish'))
     .pipe(jshint.reporter('fail'));
@@ -54,39 +64,42 @@ gulp.task('release', function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch(['./index.js', './src/**/*.js'], function() {
+  gulp.watch(GLOB_SRC_FILES, function() {
     gulp.start('jshint', 'build');
   });
 });
 
 gulp.task('build', function() {
+  var uglify     = require('gulp-uglify');
+  var rename     = require('gulp-rename');
+  var header     = require('gulp-header');
   var exportName = package.name.replace('-', '');
-  var fileName = package.name.toLocaleLowerCase();
+  var fileName   = package.name.toLocaleLowerCase();
 
-  return gulp.src('./index.js')
+  return gulp.src(FILE_BROWSERIFY_INDEX)
     .pipe(bufferedBrowserify(exportName))
     .pipe(header(banner, {name: fileName, version: package.version}))
     .pipe(rename(fileName + '.js'))
-    .pipe(gulp.dest('./dist'))
+    .pipe(gulp.dest(DIR_DIST))
     .pipe(plumber())
     .pipe(uglify({
       preserveComments: 'some'
     }))
     .pipe(rename(fileName + '.min.js'))
-    .pipe(gulp.dest('./dist'))
+    .pipe(gulp.dest(DIR_DIST))
 });
 
 gulp.task('build-test', function() {
   var espower = require('gulp-espower');
 
-  gulp.src('./test/runner.js')
+  gulp.src(FILE_TEST_RUNNER)
     .pipe(bufferedBrowserify(null))
-    .pipe(gulp.dest('./temp'));
+    .pipe(gulp.dest(DIR_TEMP));
 
-  return gulp.src(['./test/**/*.js', '!./test/runner.js'])
+  return gulp.src(GLOB_TEST_FILES)
     .pipe(bufferedBrowserify(null))
     .pipe(espower())
-    .pipe(gulp.dest('./temp'));
+    .pipe(gulp.dest(DIR_TEMP));
 });
 
 /**
@@ -107,7 +120,7 @@ gulp.task('build-test', function() {
 //  var espower = require('gulp-espower');
 //  var to5     = require('gulp-6to5');
 //
-//  return gulp.src(['./test/**/*.js', '!./test/setup.js'])
+//  return gulp.src(GLOB_TEST_FILES)
 //    .pipe(to5({
 //      experimental : false,
 //      runtime      : true

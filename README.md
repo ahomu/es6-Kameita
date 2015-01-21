@@ -1,4 +1,4 @@
-ES6 project skeleton for Browser and Node
+ES6 project template for Browser and Node
 ====================
 
 [![Licence](http://img.shields.io/badge/license-MIT-000000.svg?style=flat-square)](https://npmjs.org/package/es6-kameita)
@@ -17,7 +17,7 @@ npm install
 
 ## ES6 Compatibility
 
-This skeleton is dependent on [6to5/6to5](https://github.com/6to5/6to5). Please see [6to5's document site](https://6to5.org/). 
+This template is dependent on [6to5/6to5](https://github.com/6to5/6to5). Please see [6to5's document site](https://6to5.org/). 
 
 [Optional Runtime](https://6to5.org/optional-runtime.html) and [Polyfill](https://6to5.org/polyfill.html) are already supported.
 
@@ -70,3 +70,4 @@ Initial setting is for browser, please following steps if you want to use in the
 - add CI service configuration (Travis, Circle, etc)
 - add coverage reporter
 - add code quality reporter
+- replace jshint with eslint
