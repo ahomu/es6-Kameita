@@ -16,20 +16,18 @@ var GLOB_SRC_FILES  = ['./index.js', './src/**/*.js'];
 function bufferedBrowserify(standaloneName) {
   var transform  = require('vinyl-transform');
   var browserify = require('browserify');
-  var to5ify     = require('6to5ify');
+  var babelify   = require('babelify');
 
   return transform(function(filename) {
     return browserify(filename, {
         standalone : standaloneName,
         debug      : true,
         noParse    : [
-          require.resolve('6to5/runtime'),
-          require.resolve('6to5/browser-polyfill')
+          require.resolve('babel/browser-polyfill')
         ]
       })
-      .transform(to5ify.configure({
-        experimental : false,
-        runtime      : true
+      .transform(babelify.configure({
+        experimental : false
       }))
       .bundle()
       .on('error', function(err){
@@ -106,10 +104,10 @@ gulp.task('build-test', function() {
  * for node
  */
 //gulp.task('build', function() {
-//  var to5     = require('gulp-6to5');
+//  var babel   = require('gulp-babel');
 //
 //  return gulp.src('./src/**/*.js')
-//    .pipe(to5({
+//    .pipe(babel({
 //      experimental : false,
 //      runtime      : true
 //    }))
@@ -118,12 +116,11 @@ gulp.task('build-test', function() {
 //
 //gulp.task('build-test', function() {
 //  var espower = require('gulp-espower');
-//  var to5     = require('gulp-6to5');
+//  var babel   = require('gulp-babel');
 //
 //  return gulp.src(GLOB_TEST_FILES)
-//    .pipe(to5({
+//    .pipe(babel({
 //      experimental : false,
-//      runtime      : true
 //    }))
 //    .pipe(espower())
 //    .pipe(gulp.dest('./temp/test'));
