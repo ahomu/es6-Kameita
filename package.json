@@ -10,8 +10,10 @@
     "test": "testem -f testem.json ci",
     "devel": "testem -f testem.json",
     "build": "gulp build",
-    "release": "gulp release",
-    "watch": "gulp watch"
+    "watch": "gulp watch",
+    "patch": "npm version patch -m \"bump version %s !\"",
+    "minor": "npm version minor -m \"bump version %s !!\"",
+    "major": "npm version major -m \"bump version %s !!!\""
   },
   "repository": {
     "type": "git",
@@ -30,7 +32,6 @@
     "browserify": "~6.3.3",
     "gulp": "~3.8.10",
     "gulp-babel": "^4.0.0",
-    "gulp-bump": "^0.1.11",
     "gulp-debug": "~1.0.1",
     "gulp-espower": "^0.10.0",
     "gulp-header": "~1.2.2",
@@ -41,7 +42,6 @@
     "jshint-stylish": "~1.0.0",
     "mocha": "~2.0.1",
     "power-assert": "~0.10.0",
-    "run-sequence": "^1.0.2",
     "sinon": "~1.12.2",
     "testem": "~0.6.18",
     "vinyl-transform": "0.0.1"

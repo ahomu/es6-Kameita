@@ -30,7 +30,15 @@ npm run build
 ### Build & bump version in package.json
 
 ```
-npm run release
+npm run patch
+npm run minor
+npm run major
+```
+
+### Start watching src files (auto build when file changed)
+
+```
+npm run watch
 ```
 
 ### Run tests for development (auto re-run when file changed)
@@ -56,7 +64,7 @@ Initial setting is for browser, please following steps if you want to use in the
 
 ## Using libraries
 
-- [6to5/6to5](https://github.com/6to5/6to5)
+- [babel/babel](https://github.com/babel/babel)
 - [substack/node-browserify](https://github.com/substack/node-browserify)
 - [gulpjs/gulp](https://github.com/gulpjs/gulp/)
 - [airportyh/testem](https://github.com/airportyh/testem)

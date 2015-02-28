@@ -1,6 +1,5 @@
 var gulp     = require('gulp');
 var plumber  = require('gulp-plumber');
-var sequence = require('run-sequence').use(gulp);
 var package  = require('./package.json');
 var banner   = '/*! <%= name %> - v<%= version %> */'
 
@@ -47,27 +46,17 @@ gulp.task('jshint', function() {
     .pipe(jshint.reporter('fail'));
 });
 
-gulp.task('bump', function(){
-  return gulp.src('./package.json')
-    .pipe(bump({type:'patch'}))
-    .pipe(gulp.dest('./'));
-});
-
 gulp.task('pretest', function() {
   gulp.start('build', 'build-test');
 });
 
-gulp.task('release', function() {
-  sequence('jshint', 'bump', 'build', 'build-test');
-});
-
 gulp.task('watch', function() {
   gulp.watch(GLOB_SRC_FILES, function() {
-    gulp.start('jshint', 'build');
+    gulp.start('build');
   });
 });
 
-gulp.task('build', function() {
+gulp.task('build', ['jshint'], function() {
   var uglify     = require('gulp-uglify');
   var rename     = require('gulp-rename');
   var header     = require('gulp-header');
