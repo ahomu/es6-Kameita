@@ -1,5 +1,5 @@
 'use strict';
 
-export default function(foo, bar = 'baz', ...qux) {
+export default function(foo, bar = 'baz') {
   return 'bar!';
 }
