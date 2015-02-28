@@ -37,13 +37,13 @@ function bufferedBrowserify(standaloneName) {
   });
 }
 
-gulp.task('jshint', function() {
-  var jshint   = require('gulp-jshint');
+gulp.task('lint', function() {
+  var eslint   = require('gulp-eslint');
 
   return gulp.src(GLOB_SRC_FILES)
-    .pipe(jshint('./.jshintrc'))
-    .pipe(jshint.reporter('jshint-stylish'))
-    .pipe(jshint.reporter('fail'));
+    .pipe(eslint({useEslintrc: true}))
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
 });
 
 gulp.task('pretest', function() {
@@ -56,7 +56,7 @@ gulp.task('watch', function() {
   });
 });
 
-gulp.task('build', ['jshint'], function() {
+gulp.task('build', ['lint'], function() {
   var uglify     = require('gulp-uglify');
   var rename     = require('gulp-rename');
   var header     = require('gulp-header');
