@@ -41,10 +41,10 @@ npm run major
 npm run watch
 ```
 
-### Run tests for development (auto re-run when file changed)
+### Run tests by testem (auto re-run when file changed)
 
 ```
-npm run devel
+npm run testem
 ```
 
 ### Run tests for ci

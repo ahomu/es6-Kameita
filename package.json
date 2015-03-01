@@ -7,14 +7,15 @@
     "test": "test"
   },
   "scripts": {
+    "start": "npm run build && serve .",
     "test": "testem -f testem.json ci",
-    "devel": "testem -f testem.json",
+    "watch": "gulp watch & serve .",
     "lint": "gulp lint",
     "build": "gulp build",
-    "watch": "gulp watch",
     "patch": "npm version patch -m \"bump v%s !\"",
     "minor": "npm version minor -m \"bump v%s !!\"",
-    "major": "npm version major -m \"bump v%s !!!\""
+    "major": "npm version major -m \"bump v%s !!!\"",
+    "testem": "testem -f testem.json"
   },
   "repository": {
     "type": "git",
@@ -45,6 +46,7 @@
     "jshint-stylish": "~1.0.0",
     "mocha": "~2.0.1",
     "power-assert": "~0.10.0",
+    "serve": "^1.4.0",
     "sinon": "~1.12.2",
     "testem": "~0.7.1",
     "vinyl-transform": "0.0.1"
