@@ -17,17 +17,15 @@ npm install
 
 ## ES6 Compatibility
 
-This template is dependent on [6to5/6to5](https://github.com/6to5/6to5). Please see [6to5's document site](https://6to5.org/). 
+This template is dependent on [babel/babel](https://github.com/babel/babel). Please see [babel's document site](https://babeljs.io/). 
 
-[Optional Runtime](https://6to5.org/optional-runtime.html) and [Polyfill](https://6to5.org/polyfill.html) are already supported.
-
-### Convert the es6 files into es5 compat files, and browserifying
+### Transpile the es6 files into es5 compat files, and browserifying
 
 ```
 npm run build
 ```
 
-### Build & bump version in package.json
+### Bump version in package.json
 
 ```
 npm run patch
@@ -35,7 +33,7 @@ npm run minor
 npm run major
 ```
 
-### Start watching src files (auto build when file changed)
+### Start watching src files & launch static `localhost:3000`
 
 ```
 npm run watch
@@ -60,7 +58,7 @@ Initial setting is for browser, please following steps if you want to use in the
 
 1. Remove the comment in Gulpfile.js, to set for node setting.
 2. `testem.node.json` rename to `testem.json`
-3. Add `import  * as assert from 'power-assert';` into test code.
+3. Add `import assert from 'power-assert';` into test code.
 
 ## Using libraries
 
@@ -76,6 +74,3 @@ Initial setting is for browser, please following steps if you want to use in the
 
 - register [Gemnasium](https://gemnasium.com/)
 - add CI service configuration (Travis, Circle, etc)
-- add coverage reporter
-- add code quality reporter
-- replace jshint with eslint
